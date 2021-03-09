@@ -18,8 +18,7 @@ server.get('/search/:query', (req, res) => {
     const query = req.params.query
     fetch('https://gclone-data.s3.eu-west-2.amazonaws.com/data.json')
     .then(res => res.json())
-    .then(json => json.filter(item => item.query.q === query))
-    .then(json => res.status(200).send(json))
+    .then(json => res.status(200).send(json.filter(item => item.query.q == query)[0].organic))
 })
     //TODO:  request from zenzer API 
 
