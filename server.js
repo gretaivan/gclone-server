@@ -7,6 +7,15 @@ const cors = require('cors')
 server.use(bodyParser.json());
 server.use(cors())
 
+
+//Serpstack
+const axios = require('axios');
+
+
+
+
+
+
 server.get('/', (req, res) => {
     res.status(200).send('Welcome to gclone api')
 })
@@ -14,11 +23,45 @@ server.get('/', (req, res) => {
 
 
 // TODO: this route (search?:keyword)  req.params.keyword receive req from client
+//MODIFIED
 server.get('/search/:query', (req, res) => {
+    // const query = req.params.query
+    // fetch('https://gclone-data.s3.eu-west-2.amazonaws.com/data.json')
+    // .then(res => res.json())
+    // .then(json => res.status(200).send(json.filter(item => item.query.q == query)[0].organic))
+
     const query = req.params.query
-    fetch('https://gclone-data.s3.eu-west-2.amazonaws.com/data.json')
-    .then(res => res.json())
-    .then(json => res.status(200).send(json.filter(item => item.query.q == query)[0].organic))
+   // let url = "http://api.serpstack.com/search"
+
+
+    // const params = {
+    //     access_key: '92b7789841b181cdb97d77cc0c25d510',
+    //     query: `${query}`
+    //   }
+
+    const API_KEY = '92b7789841b181cdb97d77cc0c25d510';
+    let url = `http://api.serpstack.com/search?access_key=${API_KEY}&type=web&query=${query}`;
+
+    
+    axios.get(url)
+    .then(function (response) {
+        // handle success
+        // console.log(response.organic_results);
+        // formatData(response); 
+        response.data.organic_results.forEach(item => console.log(item))
+    }).catch(console.warn)
+      
+    //   axios.get('http://127.0.0.1:8000/serp.php', {params})
+    //     .then(response => {
+    //       const apiResponse = response.data;
+    //       console.log("Total results: ", apiResponse.search_information.total_results);
+    //       apiResponse.organic_results.map((result, number) =>
+    //         console.log(`${number+1}. ${result.title}`));
+    //     }).catch(error => {
+    //       console.log(error);
+    //     });
+
+
 })
     //TODO:  request from zenzer API 
 
@@ -28,10 +71,12 @@ server.get('/search/:query', (req, res) => {
 
 
 //TODO: format results 
-// function formatData(data){
+function formatData(data){
 //     const data = require('./data/catsData.json');
-
-    
+    console.log("FORMATER CALLED")
+    console.log(data);
+    data.organic_results.forEach(item => console.log(item))
+}
     
 //     console.log(data.cats.organic);
 
