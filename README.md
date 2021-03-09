@@ -1,49 +1,33 @@
-# Gclone Server
+# gclone Server
 
 ## Installation & Usage
 
 ### Installation
-* Run ```npm install``` to install dependencies
+* fork and clone this repo
+* open root directory in terminal
+* run ```npm install``` to install dependencies
 
 ### Usage
 * ```npm start``` to launch server
 * ```npm test``` to start test
 
-## Changelog 
-### server.js
+## Changelog
+[x] set up express server 
 [x] general route ('/') added with welcome message
-
-
-### index.js 
-
-
+[x] added routes for /search/:query & /search/random/:query
+[x] added cors, body-parser, axios packages
+[x] added axios functions to get data from external api
+[x] added helper functions for formatting and randomizing data
 
 ## TODO
-[x] Create review branch
-[] create server
-[] get request  (for returned results)
-[] post request (that passed the keyword from client)
-[] ?????post request (that passed the keyword from server to google) ?????? 
-[] get request from the google api
-[] data formatters
-[] quering to  https://zenserp.com/
-
+- [ ] create review branch
+- [x] create server
+- [x] get request to return result to client
+- [x] get request to return result from external search api
+- [x] data formatters
 
 ## Test TODO 
-[] server
-[] API POST/GET ZENSERP
-[] API POST/GET Server
-[] button "search" 
-[] button "randomSearch"
-
-
-
-
-## Chris TODO
-
-## Greta TODO
-
-
-
-
-
+- [ ] test server
+- [ ] test get requests
+- [ ] test external api calls
+- [ ] test helper functions
