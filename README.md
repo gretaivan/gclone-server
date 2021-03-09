@@ -1,5 +1,14 @@
 # Gclone Server
 
+## Installation & Usage
+
+### Installation
+* Run ```npm install``` to install dependencies
+
+### Usage
+* ```npm start``` to launch server
+* ```npm test``` to start test
+
 ## Changelog 
 
 
