@@ -11,11 +11,6 @@ server.use(cors())
 //Serpstack
 const axios = require('axios');
 
-
-
-
-
-
 server.get('/', (req, res) => {
     res.status(200).send('Welcome to gclone api')
 })
@@ -42,14 +37,15 @@ server.get('/search/:query', (req, res) => {
     const API_KEY = '92b7789841b181cdb97d77cc0c25d510';
     let url = `http://api.serpstack.com/search?access_key=${API_KEY}&type=web&query=${query}`;
 
-    
+    let resArr = []
     axios.get(url)
     .then(function (response) {
         // handle success
         // console.log(response.organic_results);
         // formatData(response); 
-        response.data.organic_results.forEach(item => console.log(item))
-    }).catch(console.warn)
+        res.status(200).send({body: response.data.organic_results})
+    })
+    .catch(console.warn)
       
     //   axios.get('http://127.0.0.1:8000/serp.php', {params})
     //     .then(response => {
