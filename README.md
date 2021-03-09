@@ -12,12 +12,12 @@
 * ```npm test``` to start test
 
 ## Changelog
-[x] set up express server 
-[x] general route ('/') added with welcome message
-[x] added routes for /search/:query & /search/random/:query
-[x] added cors, body-parser, axios packages
-[x] added axios functions to get data from external api
-[x] added helper functions for formatting and randomizing data
+- [x] set up express server 
+- [x] general route ('/') added with welcome message
+- [x] added routes for /search/:query & /search/random/:query
+- [x] added cors, body-parser, axios packages
+- [x] added axios functions to get data from external api
+- [x] added helper functions for formatting and randomizing data
 
 ## TODO
 - [ ] create review branch
