@@ -30,7 +30,7 @@ server.get('/search/:query', (req, res) => {
     // .then(res => res.json())
     // .then(json => res.status(200).send(json.filter(item => item.query.q == query)[0].organic))
 
-    const query = req.params.query
+    const query = req.params.query;
    // let url = "http://api.serpstack.com/search"
 
 
