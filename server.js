@@ -1,10 +1,11 @@
 const express = require('express')
 const server = express()
 const bodyParser = require('body-parser')
-
+const fetch = require('node-fetch');
+const cors = require('cors')
 
 server.use(bodyParser.json());
-
+server.use(cors())
 
 server.get('/', (req, res) => {
     res.status(200).send('Welcome to gclone api')
@@ -13,7 +14,13 @@ server.get('/', (req, res) => {
 
 
 // TODO: this route (search?:keyword)  req.params.keyword receive req from client
-
+server.get('/search/:query', (req, res) => {
+    const query = req.params.query
+    fetch('https://gclone-data.s3.eu-west-2.amazonaws.com/data.json')
+    .then(res => res.json())
+    .then(json => json.filter(item => item.query.q === query))
+    .then(json => res.status(200).send(json))
+})
     //TODO:  request from zenzer API 
 
 
@@ -21,14 +28,13 @@ server.get('/', (req, res) => {
 
 
 
-
 //TODO: format results 
-function formatData(data){
-    const data = require('./data/catsData.json');
+// function formatData(data){
+//     const data = require('./data/catsData.json');
 
     
     
-    console.log(data.cats.organic);
+//     console.log(data.cats.organic);
 
 
     // fetch("./data/catsData.json")
@@ -36,10 +42,10 @@ function formatData(data){
     //    return response.json();
     // })
     // .then(data => console.log(data));
-}
+// }
 
-formatData();
-//TODO: extract
+// formatData();
+// TODO: extract
 
 
 //TODO: Feeling lucky 
