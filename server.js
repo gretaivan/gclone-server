@@ -2,7 +2,9 @@ const express = require('express')
 const server = express()
 const bodyParser = require('body-parser')
 
+
 server.use(bodyParser.json());
+
 
 server.get('/', (req, res) => {
     res.status(200).send('Welcome to gclone api')
@@ -18,9 +20,25 @@ server.get('/', (req, res) => {
 //TODO: return the query result
 
 
+
+
 //TODO: format results 
+function formatData(data){
+    const data = require('./data/catsData.json');
+
+    
+    
+    console.log(data.cats.organic);
 
 
+    // fetch("./data/catsData.json")
+    // .then(response => {
+    //    return response.json();
+    // })
+    // .then(data => console.log(data));
+}
+
+formatData();
 //TODO: extract
 
 

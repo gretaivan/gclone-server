@@ -10,6 +10,12 @@
 * ```npm test``` to start test
 
 ## Changelog 
+### server.js
+[x] general route ('/') added with welcome message
+
+
+### index.js 
+
 
 
 ## TODO
